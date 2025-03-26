@@ -31,10 +31,19 @@ class ProblemSolutions {
      */
 
     public boolean isSubset(int list1[], int list2[]) {
+        boolean result = true;
+        HashSet<Integer> set = new HashSet<>();
 
-        // ADD YOU CODE HERE -- DON'T FORGET TO ADD YOR NAME AT TOP OF FILE
+        for(int n : list1){
+            set.add(n);
+        }
+        for(int n : list2){
+            if(!set.contains(n)){
+                result = false;
+            }
+        }
 
-        return false;
+        return result;
     }
 
 
