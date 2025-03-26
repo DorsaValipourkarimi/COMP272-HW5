@@ -31,7 +31,6 @@ class ProblemSolutions {
      */
 
     public boolean isSubset(int list1[], int list2[]) {
-        boolean result = true;
         HashSet<Integer> set = new HashSet<>();
 
         for(int n : list1){
@@ -39,11 +38,11 @@ class ProblemSolutions {
         }
         for(int n : list2){
             if(!set.contains(n)){
-                result = false;
+                return false;
             }
         }
 
-        return result;
+        return true;
     }
 
 
@@ -61,10 +60,15 @@ class ProblemSolutions {
      */
 
     public int findKthLargest(int[] array, int k) {
-
-        // ADD YOUR CODE HERE
-
-        return 0;
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for ( int n : array){
+            minHeap.add(n);
+            if(minHeap.size() > k){
+                minHeap.poll();
+            }
+        }
+        int result = minHeap.peek();
+        return result;
     }
 
 
