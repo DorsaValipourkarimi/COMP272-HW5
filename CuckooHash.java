@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Dorsa Valipourkarimi / COMP 272 002
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -243,14 +243,47 @@ public class CuckooHash<K, V> {
 	 * @param key the key of the element to add
      * @param value the value of the element to add
 	 */
-
+	
  	public void put(K key, V value) {
 
 		// ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME AT TOP OF FILE.
 		// Also make sure you read this method's prologue above, it should help
 		// you. Especially the two HINTS in the prologue.
 
-		return;
+		Bucket<K,V> newEl = new Bucket<>(key, value);
+		for ( int i = 0; i < CAPACITY; i++){
+			int pos1 = hash1(key);
+
+			if(table[pos1] == null){
+				table[pos1] = newEl;
+				return;
+			} else if (!table[pos1].getBucKey().equals(key) || !table[pos1].getValue().equals(value)){
+				Bucket<K,V> temp = table[pos1];
+				table[pos1] = newEl;
+				newEl = temp;
+				key = newEl.getBucKey();
+				value = newEl.getValue();
+
+				int pos2 = hash2(key);
+				if(table[pos2] == null){
+					table[pos2] = newEl;
+					return;
+				}else if (!table[pos2].getBucKey().equals(key) || !table[pos2].getValue().equals(value)) {
+					temp = table[pos2];
+					table[pos2] = newEl;
+					newEl = temp;
+					key = newEl.getBucKey();
+					value = newEl.getValue();
+				} else{
+					table[pos1] = newEl;
+					return;
+				}
+			}else{
+				return;
+			}
+		}
+		rehash();
+		put(key,value);
 	}
 
 
