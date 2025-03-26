@@ -85,10 +85,19 @@ class ProblemSolutions {
      */
 
     public int[] sort2Arrays(int[] array1, int[] array2) {
-
-        // ADD YOU CODE HERE
-
-        return null;
+        PriorityQueue<Integer> temp = new PriorityQueue<>();
+        for ( int n : array1){
+            temp.add(n);
+        }
+        for ( int n : array2){
+            temp.add(n);
+        }
+        int[] result = new int[array1.length + array2.length];
+        int index = 0;
+        while(!temp.isEmpty()){
+            result[index++] = temp.poll();
+        }
+        return result;
     }
 
 }
