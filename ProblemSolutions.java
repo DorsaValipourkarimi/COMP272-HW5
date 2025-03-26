@@ -67,8 +67,7 @@ class ProblemSolutions {
                 minHeap.poll();
             }
         }
-        int result = minHeap.peek();
-        return result;
+        return minHeap.peek();
     }
 
 
