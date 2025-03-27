@@ -249,7 +249,10 @@ public class CuckooHash<K, V> {
 	 * @param key   the key of the element to add
 	 * @param value the value of the element to add
 	 */
-
+	public void put(K key, V value) {
+		return;
+	}
+/* 
 	public void put(K key, V value) {
 
 		// ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME AT TOP OF FILE.
@@ -317,6 +320,7 @@ public class CuckooHash<K, V> {
 		rehash();
 		put(key, value); // Reinsert the last evicted item
 		}
+	*/
 
 	/**
 	 * Method get
